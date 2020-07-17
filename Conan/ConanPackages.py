@@ -23,7 +23,6 @@ class ConanPackages:
         self.run('conan create . ' + v_user + '/' + v_channel)
         
     def __parse (self, v_package):
-        print ('parse')
         packageComponent = (re.split('[/@]', v_package, 3))
         return {'name' : packageComponent [0], 'version' : packageComponent [1], 'user' : packageComponent [2], 'channel' : packageComponent [3]}
 
@@ -32,6 +31,7 @@ class ConanPackages:
         paths        = {}
         packageNames = []
         for package in v_packages:
+            print ("parse: ", package)
             packageComponent   = ConanPackages.__parse (self, package)
             path               = v_packagesPath + '/' + packageComponent ['name'] + '/' + packageComponent ['version'] + '/' + packageComponent ['user'] + '/' + packageComponent ['channel'] + '/package'
             hashFolder         = os.listdir (path)
