@@ -1,4 +1,4 @@
-PROJECT                (Template)
+PROJECT                (Gpio)
 CMAKE_MINIMUM_REQUIRED (VERSION 3.16)
 
 SET (ProjectName            Project)
@@ -82,20 +82,6 @@ GET_PACKAGES_PROPERTY (PackageName        PackageLibsNames)
 
 SET          (BuildPath ${CurrentPath}/Build)
 REMOVE_FILES ("${BuildPath}")
-
-SOURCE_GROUP               (TREE                              ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
-LINK_DIRECTORIES           (${ProjectName}                    ${PackageLibsPaths})
-ADD_EXECUTABLE             (${ProjectName}                    ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC             ${ProjectPathsLists} ${PackageIncludesPaths})
-TARGET_LINK_LIBRARIES      (${ProjectName}                    ${CONAN_LIBS_GTEST} ${PackageLibsNames})
-TARGET_COMPILE_FEATURES    (${ProjectName} PUBLIC cxx_std_17)
-
-SOURCE_GROUP               (TREE                              ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
-LINK_DIRECTORIES           (${TestsName}                      ${BuildPath}/lib ${PackageLibsPaths})
-ADD_EXECUTABLE             (${TestsName}                      ${TestFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC             ${ProjectPathsLists} ${TestPathsLists})
-TARGET_LINK_LIBRARIES      (${TestsName}                      ${LibraryName} ${PackageLibsNames})
-TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
 SOURCE_GROUP               (TREE                              ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_LIBRARY                (${LibraryName} STATIC             ${ProjectFilesAndFolders})

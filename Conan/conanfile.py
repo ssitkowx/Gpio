@@ -3,14 +3,14 @@ from ConanPackages import ConanPackages
 import os, re
 
 class Conan(ConanFile):
-    name            = "Template"
+    name            = "Gpio"
     version         = "1.0"
     user            = "ssitkowx"
     channel         = "stable"
     license         = "freeware"
     repoUrl         = "https://github.com/ssitkowx"
     url             = repoUrl + '/' + name + '.git'
-    description     = "Template for projects and packages"
+    description     = "General class for gpio"
     settings        = "os", "compiler", "build_type", "arch"
     options         = {"shared": [True, False]}
     default_options = "shared=False"
