@@ -2,7 +2,6 @@ PROJECT                (Gpio)
 CMAKE_MINIMUM_REQUIRED (VERSION 3.16)
 
 SET (ProjectName            Project)
-SET (TestsName              Tests)
 SET (LibraryName            ${CMAKE_PROJECT_NAME}Lib)
 SET (CurrentPath            ${CMAKE_CURRENT_SOURCE_DIR})
 SET (PackagesPropertiesPath "")
@@ -24,9 +23,6 @@ CONAN_BASIC_SETUP ()
 
 SET  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
-
-SET  (TestIncludePath                     ${CurrentPath}/${TestsName})
-FILE (GLOB_RECURSE TestFilesAndFolders    ${TestIncludePath}/*)
 
 MACRO (PARSE_SUBDIRECTORIES_PATHS search_directory paths)
     SET (directoryPaths "")
@@ -77,8 +73,6 @@ MACRO (GET_PACKAGES_PROPERTY pattern result)
 ENDMACRO()
 
 GET_PACKAGES_PROPERTY (PackageIncludePath PackageIncludesPaths)
-GET_PACKAGES_PROPERTY (PackageLibPath     PackageLibsPaths)
-GET_PACKAGES_PROPERTY (PackageName        PackageLibsNames)
 
 SET          (BuildPath ${CurrentPath}/Build)
 REMOVE_FILES ("${BuildPath}")
