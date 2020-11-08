@@ -36,7 +36,6 @@ MACRO (PARSE_SUBDIRECTORIES_PATHS search_directory paths)
 ENDMACRO ()
 
 PARSE_SUBDIRECTORIES_PATHS ("${ProjectFilesAndFolders}" ProjectPathsLists)
-PARSE_SUBDIRECTORIES_PATHS ("${TestFilesAndFolders}"    TestPathsLists)
 
 MACRO (REMOVE_FILES directory)
     FILE (GLOB removeLists ${directory}/*)
