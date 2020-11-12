@@ -20,9 +20,9 @@ class Gpio
     public:
         Gpio () = default;
 
-        void SetPinLevel     (const uint16_t v_num, const bool v_state)    { derivedType.SetPinLevel     (v_num, v_state); }
-        void SetPinDirection (const uint16_t v_num, const uint16_t v_mode) { derivedType.SetPinDirection (v_num, v_mode);  }
-        bool ReadPinLevel    (const uint16_t v_num)                        { derivedType.ReadPinLevel    (v_num);          }
+        void SetPinLevel     (const uint16_t v_num, const bool v_state)    { derivedType.SetPinLevel         (v_num, v_state); }
+        void SetPinDirection (const uint16_t v_num, const uint16_t v_mode) { derivedType.SetPinDirection     (v_num, v_mode);  }
+        bool ReadPinLevel    (const uint16_t v_num)                        { return derivedType.ReadPinLevel (v_num);          }
 		
 	private:
 	    ~Gpio () = default;
