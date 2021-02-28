@@ -11,11 +11,11 @@
 /////////////////////////// CLASSES/STRUCTURES ////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-class GpioMock final : public Gpio <GpioMock>
+class GpioHw final : public Gpio <GpioHw>
 {
     public:
-        GpioMock () = default;
-        ~GpioMock () = default;
+        GpioHw () = default;
+        ~GpioHw () = default;
 		
         MOCK_METHOD2 (SetPinLevel    , void (const uint16_t, const bool));
         MOCK_METHOD2 (SetPinDirection, void (const uint16_t, const uint16_t));
