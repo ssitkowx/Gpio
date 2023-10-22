@@ -28,7 +28,7 @@ class Gpio
 
         Gpio () = default;
 
-        void SetGpio      (const EGpio vGpio)                      { derivedType.ReadPinLevel        (vGpio);        }
+        void SetGpio      (const EGpio vGpio)                      { derivedType.SetGpio             (vGpio);        }
         bool ReadPinLevel (const uint16_t vNum)                    { return derivedType.ReadPinLevel (vNum);         }
         void SetPinLevel  (const uint16_t vNum, const bool vState) { derivedType.SetPinLevel         (vNum, vState); }
 
