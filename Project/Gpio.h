@@ -18,14 +18,22 @@ class Gpio
     DERIVED_TYPE & derivedType = static_cast <DERIVED_TYPE &> (*this);
 
     public:
+        enum class EGpio : uint8_t
+        {
+            GpioA,
+            GpioB,
+            GpioC,
+            GpioD
+        };
+
         Gpio () = default;
 
-        void SetPinLevel     (const uint16_t v_num, const bool v_state)    { derivedType.SetPinLevel         (v_num, v_state); }
-        void SetPinDirection (const uint16_t v_num, const uint16_t v_mode) { derivedType.SetPinDirection     (v_num, v_mode);  }
-        bool ReadPinLevel    (const uint16_t v_num)                        { return derivedType.ReadPinLevel (v_num);          }
-		
-	private:
-	    ~Gpio () = default;
+        void SetGpio      (const EGpio vGpio)                      { derivedType.ReadPinLevel        (vGpio);        }
+        bool ReadPinLevel (const uint16_t vNum)                    { return derivedType.ReadPinLevel (vNum);         }
+        void SetPinLevel  (const uint16_t vNum, const bool vState) { derivedType.SetPinLevel         (vNum, vState); }
+
+    private:
+        ~Gpio () = default;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
