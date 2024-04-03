@@ -1,5 +1,5 @@
-import os, re, sys
-from conans import tools
+import os
+from   conan.tools.files import replace_in_file
 
 class conanPackages:
     def __createFolderDownload (self, v_downloadsPath):
@@ -50,7 +50,10 @@ class conanPackages:
             paths [packageComponent ['name'] + 'PackageName']        = packageName
             packageNames.append (packageComponent ['name'])
 
-        tools.replace_in_file (os.getcwd ().replace ('/Conan','') + "/CMakeLists.txt", "PackagesTempNames", str (packageNames).strip ('[]').replace (',','').replace ('\'', ''), False)
+        print ("Packages!!!!!!!!!!!")
+        print ("packageNames: {0}".format (packageNames))
+        print (str (packageNames).strip ('[]').replace (',','').replace ('\'', ''))
+        replace_in_file (self, os.getcwd ().replace ('/Build/Release','') + "/CMakeLists.txt", "PackagesTempNames", str (packageNames).strip ('[]').replace (',','').replace ('\'', ''), False)
         return paths
 
     def install (self, v_downloadsPath, v_repoUrl, v_packages):
