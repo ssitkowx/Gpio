@@ -6,7 +6,7 @@ from conan.tools.cmake import CMake, cmake_layout, CMakeToolchain
 
 class Conan(ConanFile):
     name            = "Gpio"
-    version         = "1.1"
+    version         = "1.2"
     user            = "ssitkowx"
     channel         = "stable"
     license         = "freeware"
