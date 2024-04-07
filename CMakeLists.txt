@@ -1,12 +1,12 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 3.16)
-PROJECT                (Gpio)
+PROJECT                (gpio)
 
 SET (ProjectName            Project)
 SET (TestsName              Tests)
-SET (LibraryName            ${CMAKE_PROJECT_NAME}Lib)
+SET (LibraryName            ${CMAKE_PROJECT_NAME})
 SET (CurrentPath            ${CMAKE_CURRENT_SOURCE_DIR})
 SET (PackagesPropertiesPath ${CurrentPath}/Build/Release)
-#SET (        )
+#SET (       )
 
 MACRO (LOG_ERROR msg)
     EXECUTE_PROCESS (COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --red --bold ${msg})
@@ -67,6 +67,7 @@ GET_PACKAGES_PROPERTY (PackageName        PackageLibsNames)
 
 ENABLE_TESTING             ()
 FIND_PACKAGE               (GTest REQUIRED)
+#FIND_PACKAGE               (gpio REQUIRED)
 
 SOURCE_GROUP               (TREE                              ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 LINK_DIRECTORIES           (${ProjectName}                    ${PackageLibsPaths})

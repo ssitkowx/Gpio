@@ -1,0 +1,1 @@
+. "/home/sylwester/Desktop/Sylwester/Projekty/Git/Gpio/Conan/build/Release/generators/conanrunenv-release-x86_64.sh"
