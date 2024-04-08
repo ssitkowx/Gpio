@@ -1,26 +1,31 @@
-#pragma once 
+#pragma once
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// INCLUDES /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "Gpio.h"
 #include "Utils.h"
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////// CLASSES/STRUCTURES ////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-class GpioHw final : public Gpio <GpioHw>
+class UtilsFixture : public ::testing::Test
 {
     public:
-        GpioHw () = default;
-        ~GpioHw () = default;
+        static constexpr char * Module = (char *)"UtilsFixture";
 
-        MOCK_METHOD1 (SetGpio     , void (const EGpio));
-        MOCK_METHOD1 (ReadPinLevel, bool (const uint16_t));
-        MOCK_METHOD2 (SetPinLevel , void (const uint16_t, const bool));
+        UtilsFixture () = default;
+        ~UtilsFixture () = default;
+
+    private:
+        void TestBody () override { }
+
+    protected:
+        void SetUp    () override { }
+        void TearDown () override { }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
