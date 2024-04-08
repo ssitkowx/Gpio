@@ -22,7 +22,7 @@ class Conan(ConanFile):
     generators      = "CMakeDeps", "CMakeToolchain"
     author          = "sylsit"
     exports         = "*"
-    exports_sources = "CMakeLists.txt", "Project/*"
+    #exports_sources = "CMakeLists.txt", "Project/*"
     #requires        = ["Utils/1.1@ssitkowx/stable"]
     requires        = ["gtest/cci.20210126"]
     downloadPath    = "/home/sylwester/.conan2/download"
@@ -36,12 +36,7 @@ class Conan(ConanFile):
         projectPath  = os.getcwd ().replace ('/Conan','')
         print (projectPath)
 
-        self.folders.root = ".."
-        self.folders.source = "."
-        self.folders.build = "Build"
-
-        cmake_layout (self, src_folder = projectPath, build_folder = projectPath + '/Build/Release')
-        #cmake_layout (self)
+        cmake_layout (self, src_folder = projectPath, build_folder = projectPath + '/Build')
 
     def source (self):
         print ("Source !!!!!!!!!!!")
@@ -73,23 +68,19 @@ class Conan(ConanFile):
             raise Exception ('Unsupported platform or compiler')
 
     def package (self):
+        print ("Package !!!!")
         packagePath = self.packagePath + '/' + self.name
 
         copy (self, '*.h'  , src = os.path.join (self.source_folder, "Project"), dst = os.path.join (packagePath, "include"), keep_path = False)
         copy (self, '*.hxx', src = os.path.join (self.source_folder, "Project"), dst = os.path.join (packagePath, "include"), keep_path = False)
         copy (self, '*.a'  , src = self.build_folder                           , dst = os.path.join (packagePath, "lib")    , keep_path = False)
 
-        copy (self, "*.h"  , self.build_folder, os.path.join (self.package_folder, "include"), keep_path = False)
-        copy (self, "*.lib", self.build_folder, os.path.join (self.package_folder, "lib")    , keep_path = False)
-        copy (self, "*.a"  , self.build_folder, os.path.join (self.package_folder, "lib")    , keep_path = False)
-
     def export_sources (self):
         print ("Export sources !!!!!!!!!!!")
 
-        # The path of the CMakeLists.txt and sources we want to export are one level above
-        folder = os.path.join (self.recipe_folder, "..")
-        copy (self, "*.txt"        , folder, self.export_sources_folder)
-        copy (self, "Tests/*.hxx"  , folder, self.export_sources_folder)
-        copy (self, "Tests/*.cxx"  , folder, self.export_sources_folder)
-        copy (self, "Project/*.h"  , folder, self.export_sources_folder)
-        copy (self, "Project/*.cpp", folder, self.export_sources_folder)
+        receipePath = os.path.join (self.recipe_folder, "..")
+        copy (self, "*.txt"        , receipePath, self.export_sources_folder)
+        copy (self, "Tests/*.hxx"  , receipePath, self.export_sources_folder)
+        copy (self, "Tests/*.cxx"  , receipePath, self.export_sources_folder)
+        copy (self, "Project/*.h"  , receipePath, self.export_sources_folder)
+        copy (self, "Project/*.cpp", receipePath, self.export_sources_folder)
