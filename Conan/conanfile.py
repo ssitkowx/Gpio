@@ -2,8 +2,8 @@ import os
 
 from conan             import ConanFile
 from conanPackages     import conanPackages
-from conan.tools.files import copy, load
 from conan.tools.cmake import CMake, cmake_layout
+from conan.tools.files import copy, load, replace_in_file
 
 class Conan(ConanFile):
     name            = "gpio"
@@ -28,8 +28,6 @@ class Conan(ConanFile):
 
     def layout (self):
         projectPath = os.getcwd ().replace ('/Conan','')
-        print (projectPath)
-
         cmake_layout (self, src_folder = projectPath, build_folder = projectPath + '/Build')
 
     def source (self):
@@ -37,9 +35,6 @@ class Conan(ConanFile):
         conanPackages.install (self, self.repoPath, self.repoUrl, self.packages)
 
     def build (self):
-        projectPath  = os.getcwd ().replace ('/Build/Release','')
-        buildPath = projectPath
-
         if self.settings.os == 'Linux' and self.settings.compiler == 'gcc':
             cmake = CMake (self)
             cmake.configure ()
