@@ -2,8 +2,8 @@ import os
 
 from conan             import ConanFile
 from conanPackages     import conanPackages
+from conan.tools.files import copy, load
 from conan.tools.cmake import CMake, cmake_layout
-from conan.tools.files import copy, load, replace_in_file
 
 class Conan(ConanFile):
     name            = "gpio"
@@ -24,7 +24,7 @@ class Conan(ConanFile):
     downloadPath    = "/home/sylwester/.conan2/download"
     repoPath        = downloadPath + '/Repo'
     packagePath     = downloadPath + '/Package'
-    packages        = ["utils/1.2"]
+    packages        = []
 
     def layout (self):
         projectPath = os.getcwd ().replace ('/Conan','')

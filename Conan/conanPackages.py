@@ -50,4 +50,3 @@ class conanPackages:
 
             packageNames.append (packageComponent ['name'])
         conanPackages.__updateCMakeLists (self, projectPath, "SET (PackageNames )", "SET (PackageNames " + " ".join (packageNames) + ")")
-

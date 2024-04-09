@@ -5,7 +5,7 @@ SET (ProjectName            Project)
 SET (TestsName              Tests)
 SET (LibraryName            ${CMAKE_PROJECT_NAME})
 SET (CurrentPath            ${CMAKE_CURRENT_SOURCE_DIR})
-SET (PackageNames utils)
+SET (PackageNames )
 SET (PackageIncludePath /home/sylwester/.conan2/download/Package)
 
 MACRO (LOG_ERROR msg)
