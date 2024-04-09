@@ -24,7 +24,7 @@ class Conan(ConanFile):
     downloadPath    = "/home/sylwester/.conan2/download"
     repoPath        = downloadPath + '/Repo'
     packagePath     = downloadPath + '/Package'
-    packages        = ["utils/1.2@ssitkowx/stable"]
+    packages        = ["utils/1.2"]
 
     def layout (self):
         projectPath = os.getcwd ().replace ('/Conan','')

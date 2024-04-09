@@ -4,8 +4,8 @@ from   conan.tools.files import replace_in_file
 
 class conanPackages:
     def __parse (self, vPackage):
-        packageComponent = (re.split('[/@]', vPackage, 3))
-        return {'name' : packageComponent [0], 'version' : packageComponent [1], 'user' : packageComponent [2], 'channel' : packageComponent [3]}
+        packageComponent = (re.split('[/]', vPackage))
+        return {'name' : packageComponent [0], 'version' : packageComponent [1] }
     
     def __createRepo (self, vRepoPath):
         print ('createRepoFolder')
@@ -13,9 +13,9 @@ class conanPackages:
             os.mkdir (vRepoPath)
         os.chdir (vRepoPath)
 
-    def __createPackage (self, vUser, vChannel):
+    def __createPackage (self, vName, vVersion):
         print ('createPackage')
-        self.run ('conan create . --user ' + vUser + ' --channel ' + vChannel)
+        self.run ('conan create . --name ' + vName + ' --version ' + vVersion)
 
     def __updateCMakeLists (self, vProjectPath, vSearch, vReplace):
         replace_in_file (self, os.path.join (vProjectPath, "CMakeLists.txt"), vSearch, vReplace, False)
@@ -46,7 +46,7 @@ class conanPackages:
             packageComponent = conanPackages.__parse (self, package)
             conanPackages.__createRepo               (self, vRepoPath)
             conanPackages.__cloneRepo                (self, packageComponent ['name'], packageComponent ['version'], vRepoPath, vRepoUrl)
-            conanPackages.__createPackage            (self, packageComponent ['user'], packageComponent ['channel'])
+            conanPackages.__createPackage            (self, packageComponent ['name'], packageComponent ['version'])
 
             packageNames.append (packageComponent ['name'])
         conanPackages.__updateCMakeLists (self, projectPath, "SET (PackageNames )", "SET (PackageNames " + " ".join (packageNames) + ")")
