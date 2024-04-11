@@ -6,7 +6,7 @@ SET (TestsName              Tests)
 SET (LibraryName            ${CMAKE_PROJECT_NAME})
 SET (CurrentPath            ${CMAKE_CURRENT_SOURCE_DIR})
 SET (PackageNames )
-SET (PackageIncludePath /home/sylwester/.conan2/download/Package)
+SET (PackageIncludePath /home/sylwester/.conan2/download/packages)
 
 MACRO (LOG_ERROR msg)
     EXECUTE_PROCESS (COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --red --bold ${msg})
