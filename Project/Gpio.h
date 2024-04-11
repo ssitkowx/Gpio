@@ -20,17 +20,17 @@ class Gpio
     public:
         enum class EGpio : uint8_t
         {
-            GpioA,
-            GpioB,
-            GpioC,
-            GpioD
+            A,
+            B,
+            C,
+            D
         };
 
         Gpio () = default;
 
-        void SetGpio      (const EGpio vGpio)                      { derivedType.SetGpio             (vGpio);        }
-        bool ReadPinLevel (const uint16_t vNum)                    { return derivedType.ReadPinLevel (vNum);         }
-        void SetPinLevel  (const uint16_t vNum, const bool vState) { derivedType.SetPinLevel         (vNum, vState); }
+        void SetBank      (const EGpio vGpio)                                         { derivedType.SetBank             (vGpio);               }
+        bool ReadPinLevel (const EGpio vGpio, const uint16_t vNum)                    { return derivedType.ReadPinLevel (vGpio, vNum);         }
+        void SetPinLevel  (const EGpio vGpio, const uint16_t vNum, const bool vState) { derivedType.SetPinLevel         (vGpio, vNum, vState); }
 
     private:
         ~Gpio () = default;
