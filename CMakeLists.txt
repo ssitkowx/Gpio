@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED (VERSION 3.16)
+CMAKE_MINIMUM_REQUIRED (VERSION 2.16)
 PROJECT                (gpio)
 
 SET (ProjectName            Project)
