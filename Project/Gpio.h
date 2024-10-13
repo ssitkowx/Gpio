@@ -23,7 +23,8 @@ class Gpio
             A,
             B,
             C,
-            D
+            D,
+            Default
         };
 
         Gpio () = default;
