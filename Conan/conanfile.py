@@ -46,10 +46,12 @@ class Conan(ConanFile):
         packagePath = self.packagePath + '/' + self.name
 
         copy (self, '*.h'  , src = os.path.join (self.source_folder, "Project"), dst = os.path.join (packagePath, "include")        , keep_path = False)
+        copy (self, '*.hpp', src = os.path.join (self.source_folder, "Project"), dst = os.path.join (packagePath, "include")        , keep_path = False)
         copy (self, '*.hxx', src = os.path.join (self.source_folder, "Project"), dst = os.path.join (packagePath, "include")        , keep_path = False)
         copy (self, '*.a'  , src = self.build_folder                           , dst = os.path.join (packagePath, "lib")            , keep_path = False)
 
         copy (self, '*.h'  , src = os.path.join (self.source_folder, "Project"), dst = os.path.join (self.package_folder, "include"), keep_path = False)
+        copy (self, '*.hpp', src = os.path.join (self.source_folder, "Project"), dst = os.path.join (self.package_folder, "include"), keep_path = False)
         copy (self, '*.hxx', src = os.path.join (self.source_folder, "Project"), dst = os.path.join (self.package_folder, "include"), keep_path = False)
         copy (self, '*.a'  , src = self.build_folder                           , dst = os.path.join (self.package_folder, "lib")    , keep_path = False)
 
@@ -60,4 +62,5 @@ class Conan(ConanFile):
         copy (self, "Tests/*.hxx"  , receipePath, self.export_sources_folder)
         copy (self, "Tests/*.cxx"  , receipePath, self.export_sources_folder)
         copy (self, "Project/*.h"  , receipePath, self.export_sources_folder)
+        copy (self, "Project/*.hpp", receipePath, self.export_sources_folder)
         copy (self, "Project/*.cpp", receipePath, self.export_sources_folder)
