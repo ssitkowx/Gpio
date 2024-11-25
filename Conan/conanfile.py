@@ -59,6 +59,7 @@ class Conan(ConanFile):
         receipePath = os.path.join (self.recipe_folder, "..")
 
         copy (self, "*.txt"        , receipePath, self.export_sources_folder)
+        copy (self, "Tests/*.hpp"  , receipePath, self.export_sources_folder)
         copy (self, "Tests/*.hxx"  , receipePath, self.export_sources_folder)
         copy (self, "Tests/*.cxx"  , receipePath, self.export_sources_folder)
         copy (self, "Project/*.h"  , receipePath, self.export_sources_folder)
